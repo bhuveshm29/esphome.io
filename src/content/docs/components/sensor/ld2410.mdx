@@ -86,14 +86,15 @@ binary_sensor:
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
 - **calibration** (*Optional*): Reports whether the [`background_correction`](#ld2410-background-correction) routine
-  is currently running. Defaults to `device_class: running`.
+  is currently running. Off at boot. Only updates when the `background_correction` button is configured.
+  Defaults to `device_class: running`.
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
 - **ld2410_id** (*Optional*, [ID](/guides/configuration-types#id)): Manually specify the ID for the [Ld2410](/components/sensor/ld2410/) component if you are
   using multiple components.
 
 > [!NOTE]
-> By default, each of the [Binary Sensor](/components/binary_sensor/) components above includes the
+> By default, each of the [Binary Sensor](/components/binary_sensor/) components above except `calibration` includes the
 > following [filter](/components/binary_sensor#binary-sensor-filters) by default to prevent flooding Home Assistant with state updates:
 >
 > ```yaml
@@ -398,7 +399,7 @@ button:
   [`background_correction_duration`](#ld2410-component) and rewrites all gate thresholds. People **must** be absent
   while it runs; leave other clutter such as fans or HVAC in place. The optional
   [`calibration`](#binary-sensor) binary sensor reflects the routine's running state, and the gate
-  [thresholds](#ld2410-number) refresh on completion. Requires module firmware V2.44 or later.
+  [thresholds](#number) refresh when it ends. Requires module firmware V2.44 or later.
   All options from [Button](/components/button#config-button).
 
 - **ld2410_id** (*Optional*, [ID](/guides/configuration-types#id)): Manually specify the ID for the [Ld2410](/components/sensor/ld2410/) component if you are
@@ -432,10 +433,10 @@ text_sensor:
   - `Success`: the module reported a pass.
   - `Failed`: the module reported a fail, usually because a person was in range.
   - `Unconfirmed`: the routine finished, but the module reported neither pass nor fail.
-  - `Refused`: the module rejected the command.
+  - `Refused`: the module rejected the start command.
   - `Timed out`: the module did not report completion in time.
 
-  Has no state until the first run after boot.
+  Has no state until the first run after boot. Only updates when the `background_correction` button is configured.
   All options from [Text Sensor](/components/text_sensor#config-text_sensor).
 
 - **ld2410_id** (*Optional*, [ID](/guides/configuration-types#id)): Manually specify the ID for the [Ld2410](/components/sensor/ld2410/) component if you are
