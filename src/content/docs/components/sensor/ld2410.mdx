@@ -434,7 +434,7 @@ text_sensor:
   - `Success`: the module reported a pass.
   - `Failed`: the module reported a fail, usually because a person was in range.
   - `Unconfirmed`: the routine finished, but the module reported neither pass nor fail.
-  - `Refused`: the module rejected the start command.
+  - `Refused`: the module rejected the start command, or its firmware is older than V2.44.
   - `Timed out`: the module did not report completion in time.
 
   Has no state until the first run after boot. Requires the `background_correction` button.
