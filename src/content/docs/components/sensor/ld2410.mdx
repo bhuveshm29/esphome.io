@@ -48,7 +48,8 @@ ld2410:
 
 - **background_correction_duration** (*Optional*, [Time](/guides/configuration-types#time)): The window the module
   spends measuring the background noise floor when the [`background_correction`](#ld2410-background-correction) button
-  is pressed. Value between `10s` and `120s` inclusive. Defaults to `10s`. Requires module firmware V2.44 or later.
+  is pressed. Value between `10s` and `120s` inclusive. Defaults to `10s`. Requires module firmware V2.44 or later
+  and the `background_correction` button.
 
 ## Binary Sensor
 
@@ -86,7 +87,7 @@ binary_sensor:
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
 - **calibration** (*Optional*): Reports whether the [`background_correction`](#ld2410-background-correction) routine
-  is currently running. Off at boot. Only updates when the `background_correction` button is configured.
+  is currently running. Off at boot. Requires the `background_correction` button.
   Defaults to `device_class: running`.
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
@@ -436,7 +437,7 @@ text_sensor:
   - `Refused`: the module rejected the start command.
   - `Timed out`: the module did not report completion in time.
 
-  Has no state until the first run after boot. Only updates when the `background_correction` button is configured.
+  Has no state until the first run after boot. Requires the `background_correction` button.
   All options from [Text Sensor](/components/text_sensor#config-text_sensor).
 
 - **ld2410_id** (*Optional*, [ID](/guides/configuration-types#id)): Manually specify the ID for the [Ld2410](/components/sensor/ld2410/) component if you are
