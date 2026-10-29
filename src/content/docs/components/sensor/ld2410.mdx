@@ -382,8 +382,6 @@ button:
       name: Calibrate radar
 ```
 
-<span id="ld2410-background-correction"></span>
-
 ### Configuration variables
 
 - **factory_reset** (*Optional*): This command is used to restore all configuration values to their original values.
@@ -395,7 +393,7 @@ button:
 - **query_params** (*Optional*): Refresh all sensors values of the device.
   All options from [Button](/components/button#config-button).
 
-- **background_correction** (*Optional*): Triggers the module's native automatic background-noise correction routine.
+- <span id="ld2410-background-correction"></span>**background_correction** (*Optional*): Triggers the module's native automatic background-noise correction routine.
   The module measures the noise floor for the configured
   [`background_correction_duration`](#ld2410-component) and rewrites all gate thresholds. People **must** be absent
   while it runs; leave other clutter such as fans or HVAC in place. The optional
@@ -531,6 +529,10 @@ binary_sensor:
 ```
 
 ## Calibration Process
+
+> [!TIP]
+> On module firmware V2.44 or later, the [`background_correction`](#ld2410-background-correction) button calibrates
+> the thresholds automatically. Use the manual steps below on older firmware, or to fine-tune afterwards.
 
 In order to calibrate your `ld2410` sensor perform the following:
 
