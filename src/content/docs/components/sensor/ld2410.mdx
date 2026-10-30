@@ -96,7 +96,8 @@ binary_sensor:
 
 > [!NOTE]
 > By default, each of the [Binary Sensor](/components/binary_sensor/) components above except `calibration` includes the
-> following [filter](/components/binary_sensor#binary-sensor-filters) by default to prevent flooding Home Assistant with state updates:
+> following [filter](/components/binary_sensor#binary-sensor-filters) by default to prevent flooding Home Assistant
+> with state updates:
 >
 > ```yaml
 > - settle: 1000ms
@@ -393,8 +394,8 @@ button:
 - **query_params** (*Optional*): Refresh all sensors values of the device.
   All options from [Button](/components/button#config-button).
 
-- <span id="ld2410-background-correction"></span>**background_correction** (*Optional*): Triggers the module's native automatic background-noise correction routine.
-  The module measures the noise floor for the configured
+- <span id="ld2410-background-correction"></span>**background_correction** (*Optional*): Triggers the module's native
+  automatic background-noise correction routine. The module measures the noise floor for the configured
   [`background_correction_duration`](#ld2410-component) and rewrites all gate thresholds. People **must** be absent
   while it runs; leave other clutter such as fans or HVAC in place. The optional
   [`calibration`](#binary-sensor) binary sensor reflects the routine's running state, and the gate
