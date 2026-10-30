@@ -86,8 +86,9 @@ binary_sensor:
   [light function](#ld2410-light-function) configuration. Might need to update to the latest firmware to use this.
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
-- **calibration** (*Optional*): Reports whether the [`background_correction`](#ld2410-background-correction) routine
-  is currently running. Off at boot. Requires the `background_correction` button.
+- **calibration** (*Optional*): On while ESPHome runs the [`background_correction`](#ld2410-background-correction)
+  routine: from the start command until the module reports completion or the run's deadline passes, so it follows
+  ESPHome's run rather than a state confirmed by the module. Off at boot. Requires the `background_correction` button.
   Defaults to `device_class: running`.
   All options from [Binary Sensor](/components/binary_sensor#config-binary_sensor).
 
@@ -398,7 +399,7 @@ button:
   automatic background-noise correction routine. The module measures the noise floor for the configured
   [`background_correction_duration`](#ld2410-component) and rewrites all gate thresholds. People **must** be absent
   while it runs; leave other clutter such as fans or HVAC in place. The optional
-  [`calibration`](#binary-sensor) binary sensor reflects the routine's running state, and the gate
+  [`calibration`](#binary-sensor) binary sensor is on while ESPHome runs the routine, and the gate
   [thresholds](#number) refresh when it ends. Requires module firmware V2.44 or later.
   All options from [Button](/components/button#config-button).
 
